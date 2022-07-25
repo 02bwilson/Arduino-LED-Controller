@@ -39,12 +39,11 @@ class LEDController:
             print(e)
             pass
 
-
     def send_stream(self, stream_dict):
         for stream_data in stream_dict['stream']:
             if stream_data[2] == "PRE":
                 time.sleep(stream_data[1])
-            self.serial_connection.writelines(b'%b' % bytes(stream_data[0].encode('utf-8')) )
+            self.serial_connection.writelines(b'%b' % bytes(stream_data[0].encode('utf-8')))
 
             if stream_data[2] == "POST":
                 time.sleep(stream_data[1])
