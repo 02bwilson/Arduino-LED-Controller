@@ -10,6 +10,7 @@ class LEDController:
 
     def __init__(self):
         self.serial_connection = None
+        self.continue_flag = True
         pass
 
     def stream(self, stream_dict, serial_port=None, setup_blink=True):
@@ -43,19 +44,23 @@ class LEDController:
         for stream_data in stream_dict['stream']:
             if stream_data[2] == "PRE":
                 time.sleep(stream_data[1])
+
             self.serial_connection.writelines(b'%b' % bytes(stream_data[0].encode('utf-8')))
 
             if stream_data[2] == "POST":
                 time.sleep(stream_data[1])
 
-        if stream_dict['repeat']:
+        if stream_dict['repeat'] and self.continue_flag:
             self.send_stream(stream_dict)
+
+    def stop_stream(self):
+        self.continue_flag = False
 
 
 if __name__ == "__main__":
     controller = LEDController()
     stream_dict = {
-        "stream": [["H", 1, "POST"], ["H", .5, "PRE"]],
+        "stream": [["H", .05, "POST"]],
         "repeat": True
     }
     controller.stream(stream_dict=stream_dict, serial_port=3)
