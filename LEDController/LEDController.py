@@ -42,6 +42,8 @@ class LEDController:
 
     def send_stream(self, stream_dict):
         for stream_data in stream_dict['stream']:
+            if not self.continue_flag:
+                return
             if stream_data[2] == "PRE":
                 time.sleep(stream_data[1])
 
