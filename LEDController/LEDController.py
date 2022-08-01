@@ -2,8 +2,6 @@
 
 # Python
 import time
-import traceback
-
 import serial
 
 
