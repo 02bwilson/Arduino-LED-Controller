@@ -2,6 +2,8 @@
 
 # Python
 import time
+import traceback
+
 import serial
 
 
@@ -35,9 +37,8 @@ class LEDController:
                 time.sleep(.25)
             self.send_stream(stream_dict)
 
-        except Exception as e:
-            print(e)
-            pass
+        except serial.serialutil.SerialException:
+            raise Exception("Error connecting to serial port {}!".format(serial_port))
 
     def send_stream(self, stream_dict):
         for stream_data in stream_dict['stream']:
