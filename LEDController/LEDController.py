@@ -53,7 +53,8 @@ class LEDController:
 
         if stream_dict['repeat'] and self.continue_flag:
             self.send_stream(stream_dict)
-
+        else:
+            return
     def stop_stream(self):
         self.continue_flag = False
 
@@ -61,7 +62,7 @@ class LEDController:
 if __name__ == "__main__":
     controller = LEDController()
     stream_dict = {
-        "stream": [["H", .5, "PRE"]],
+        "stream": [["H", .5, "POST"]],
         "repeat": True
     }
-    controller.stream(stream_dict=stream_dict, serial_port=3)
+    controller.stream(stream_dict=stream_dict, serial_port=3, setup_blink=False)
