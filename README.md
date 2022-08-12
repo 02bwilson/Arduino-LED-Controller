@@ -1,6 +1,6 @@
 # Arduino LED Controller
 
-Arduino LED Controller is an easy to use interface for controlling the LED on an Arduino.
+Arduino LED Controller that works by sending serial signals to an Arduino. 
 
 ## Installation
 
