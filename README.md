@@ -1,6 +1,6 @@
 # Arduino LED Controller
 
-Arduino LED Controller that works by sending serial signals to an Arduino. 
+Arduino LED Controller is a simple LED Controller that works by sending serial signals to an Arduino. 
 
 ## Installation
 
